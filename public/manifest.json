@@ -1,0 +1,18 @@
+{
+    "short_name": "DEVconnect",
+    "name": "DevelopersConnect",
+    "theme_color": "#fff",
+    "background_color": "#fff",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "images/ICON.png",
+        "type": "image/png",
+        "sizes": "64x64"
+      }
+
+
+    ],
+    "start_url": "http://localhost:8000/",
+    "orientation": "portrait"
+  }
