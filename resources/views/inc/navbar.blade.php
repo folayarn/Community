@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+<nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
 
     <a class="navbar-brand" href="/">{{config('app.name','MyCV')}}</a>
     <button  class="navbar-toggler btn btn-lg btn-success" type="button"

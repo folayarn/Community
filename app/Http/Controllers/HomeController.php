@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
-
+use App\FollowPost;
+use DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,8 +27,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $questions=Question::orderBy('id','desc')->paginate(15);
-        return view('home')->with('questions',$questions);
+
+
+        $questions=Question::orderBy('created_at','desc')
+        ->paginate(15);
+
+        return view('home',compact('questions'));
     }
 
 

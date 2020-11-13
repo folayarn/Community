@@ -3,7 +3,7 @@
 @section('main')
 
 <div class="col-md-9">
-<h3>Recent Answers Provided by you </h3>
+<h3 style="text-align:center">Recent Answers Provided by you </h3>
 
 
 <div id="search_list">
@@ -27,7 +27,7 @@
 
 @else
 
-<h3 class="alter" class="text-center">You have not Provided answer to Questions </h3>
+<h3 class="alter" style="text-align:center">You have not Provided answer to Questions </h3>
 
 @endif
 </div>

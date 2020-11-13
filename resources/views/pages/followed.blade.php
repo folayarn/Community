@@ -2,7 +2,7 @@
 
 @section('main')
     <div class="col-md-9">
-<h3>Recent Questions Posted you</h3>
+<h3 style="text-align:center">Following Questions</h3>
 
 
 <div id="search_list">
@@ -11,17 +11,20 @@
 
 <div class="card list-card">
     <div class="card-body">
-    <h5 class="card-title"><a href="/trid=f/{{$que->id}}"> {{ $que->topic}}</a>
+    <h5 class="card-title"><a href="/trid=f/{{$que->question_id}}"> {{ $que->topic}}</a>
     </h5>
     <div style="margin-bottom:50px; padding:10px">
         <span class="card-text category pull-left"> {{ $que->category}}</span>
-        
+
+        </div>
+        <div>
+            <span class=" pull-right" style="color: darkgrey"> Posted by <i style="color: darkgrey" >{{$que->question_provider}}</i></span>
         </div>
 
     </div>
     <div class="card-footer">
-        <span class="pull-left"> {{ $que->created_at->diffForHumans()}}</span>
-        <span style="margin-left:40px"><span class="fa fa-book"></span>{{$que->countAns}}</span>
+        <span class="pull-left"> {{ $que->creates}}</span>
+        
             @if($que->isAnswered == true)
 <span class="pull-right" style="color:green">Answered
     <span style="color:green" class="fa fa-check"></span> </span>
@@ -40,7 +43,7 @@ Not Answered Yet
 
 @else
 
-<h3 class="alter" class="text-center">you have not post any Question</h3>
+<h3 class="alter" style="text-align:center">no following questions yet!! </h3>
 
 @endif
 </div>

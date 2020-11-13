@@ -6,23 +6,29 @@ Menu
 </div>
     <div class="row" style="margin-top:50px">
        <div class="col-md-3 sidebar" >
-
-            <h5 id="top"><span class="fa fa-user"></span> DashBoard</h5>
-
-<ul>
+           
+<div class="col-md-3" id="top">
+            <span><span class="fa fa-user"></span> DashBoard</span>
+</div>
+<ul class="col-md-3 tabs">
 
 <li><a href="/create-questions"> Post Question</a> </li>
-<hr/>
-<li><a href="/{{Auth::user()->id}}">My Questions</a></li>
-<hr/>
-<li><a href="/ans/{{Auth::user()->id}}">My Answers</a></li>
-<hr/>
+
+<li><a href="/my-q">My Questions({{$var}})</a></li>
+
+<li><a href="/following">Followed Questions({{$follow}})</a></li>
+
+
+<li><a href="/ans">My Answers({{$myanswer}})</a></li>
+
+<li><a href="/quiz">Quiz</a></li>
+
 <li><a href="/home">Questions</a></li>
-<hr/>
+
 <li> <a href="{{ route('logout') }}"
            onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
-                          <span class="fa fa-sign-out"></span>
+                          <span style="color:rgb(221, 137, 137)" class="fa fa-sign-out"></span>
             {{ __('Logout') }}
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -34,10 +40,9 @@ Menu
 </li>
 </ul>
 
-
        </div>
 
-
+       
         <div class="col-md-9">
 
 

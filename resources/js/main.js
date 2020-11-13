@@ -194,7 +194,7 @@ data:$(this).serialize()
                 data:{'search':query},
                 success:function(res){
                     $('#search_list').html(res);
-                
+
             }
         })
         });
@@ -216,6 +216,56 @@ $('input[name="answered"]').on('click',function(e){
 $('#all').html('<h5 style="color:green">Answered<span style="color:green" class="fa fa-check"></span></h5>')
     })
 })
+
+
+$('#follow').on('click',function(e){
+    e.preventDefault()
+
+$('#follow').text('Following...')
+var post_id= $('input[name=ques_id]').val()
+var isFollow= $('input[name=isFollow]').val()
+var isAnswered= $('input[name=isAnswered]').val()
+var topic= $('input[name=topic]').val()
+var body= $('input[name=body]').val()
+var category= $('input[name=category]').val()
+var creates= $('input[name=creates]').val()
+var question_provider= $('input[name=question_provider]').val()
+$.ajax({
+url:'/follow',
+type:'POST',
+data:{'post_id':post_id,'isFollow':isFollow,'isAnswered':isAnswered,
+'topic':topic,'body':body,'category':category,'question_provider':question_provider,
+'creates':creates
+}
+}).done(function(response){
+    $('#showFollo').css({display:'none'})
+    $('.own1').css({display:'inline'})
+
+}).fail(function(){
+
+    $('#follow').text('Follow')
+})
+})
+
+
+$('#dfollow').on('click',function(e){
+    e.preventDefault()
+
+    $('#dfollow').text('Unfollowing...')
+
+var post_id= $('input[name=ques_id]').val()
+$.ajax({
+url:'/follow/'+post_id,
+type:'DELETE',
+}).done(function(response){
+$('#dfollow').css({display:'none'})
+$('#showFollo').css({display:'inline'})
+}).fail(function(){
+    $('#dfollow').text('Unfollow')
+
+})
+})
+
 
 
 

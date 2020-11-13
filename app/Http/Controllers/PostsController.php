@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Answer;
+use DB;
+use App\FollowPost;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,10 +73,11 @@ return response('save to the database');
     public function show($id)
     {
         $question=Question::find($id);
- $answer= Answer::where('question_id',$id)->orderBy('created_at','desc')->paginate(4);
+ $answer= $question->answer;
+$follow=FollowPost::where('user_id',Auth::user()->id)
+->where('question_id',$id)->first();
 
-
-       return view('pages.show_question',compact('question','answer'));
+       return view('pages.show_question',compact('question','answer','follow'));
     }
 
     public function showAll(){
@@ -182,12 +185,18 @@ $question=Question::find($id);
             'body'=>'required'
             ]);
 
-             Answer::create([
+          $answer= Answer::create([
                 'body'=>$request->body,
                 'user_id'=>Auth::user()->id,
                 'answer_provider'=>Auth::user()->name,
                 'question_id'=>$request->id
              ]);
+
+             if($answer){
+$question=Question::find($request->id);
+$question->countAns+=1;
+$question->save();
+             }
 
              return response('save to the database');
 
@@ -201,7 +210,7 @@ $question=Question::find($id);
 
             $data = Question::where('topic', 'LIKE',$request->search.'%')->get();
 
-            
+
          $output = '';
 
             if (count($data)>0) {
@@ -269,18 +278,66 @@ public function answered(Request $request, $id){
         return response('answered');
             }
 
-            public function myQues($user_id){
+            public function myQues(){
 
-          $question= Question::where('user_id',$user_id)->orderBy('created_at','desc')->paginate(4);
+                $follow=FollowPost::where('user_id',Auth::user()->id)->first();
 
-          return view('pages.myques')->with('question',$question);
+          $question= Question::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->paginate(4);
+
+          return view('pages.myques',compact('question','follow'));
+
+            }
+
+            public function followedQues(){
+
+                $question=FollowPost::where('user_id',Auth::user()->id)->paginate(10);    
+         return view('pages.followed',compact('question'));
 
             }
 
 
-public function myAns($user_id){
-    $answer= Answer::where('user_id',$user_id)->orderBy('created_at','desc')->paginate(4);
+
+public function myAns(){
+    $answer= Answer::where('user_id',Auth::user()->id)
+    ->orderBy('created_at','desc')->paginate(4);
     return view('pages.myans')->with('answer',$answer);
 
 }
+
+
+public function followPost(Request $request){
+
+    $this->validate($request,[
+
+        'post_id'=>'required',
+        'isFollow'=>'required',
+        'isAnswered'=>'required',
+        'topic'=>'required',
+        'body'=>'required',
+        'category'=>'required',
+        'question_provider'=>'required',
+        'creates'=>'required'
+        ]);
+
+        $post= new FollowPost();
+        $post->user_id=Auth::user()->id;
+        $post->question_id=$request->input('post_id');
+        $post->isFollowed=$request->input('isFollow');
+        $post->isAnswered=$request->input('isAnswered');
+        $post->topic=$request->input('topic');
+        $post->creates=$request->input('creates');
+        $post->body=$request->input('body');
+        $post->category=$request->input('category'); 
+        $post->question_provider=$request->input('question_provider');
+        $post->save();
+return response('following');
+
+}
+
+public function deleteFollow($id){
+    $follow=FollowPost::where('question_id',$id);
+    $follow->delete();
+
+}
+
 }

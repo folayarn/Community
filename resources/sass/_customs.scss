@@ -1,40 +1,45 @@
 *{
 
 color:black;
+font-family:  Tahoma;
+}
+.card{
+    box-shadow:1px 2px 5px 2px rgba(0,0,0,0.1);
+}
+nav{
+    background-color:rgb(1, 14, 13);
+    
+}
 
+.row,.container-fluid{
+    padding: 0px;
+    margin:0px;
+}
+.sidebar span{
+    color: white;
+    font-size: 14pt;
 }
 a:hover{
 cursor: pointer;
+text-decoration: none;
 }
+ul li{
+    list-style: none;
+    }
 
 #top{
-background-color: $green;
-width:auto;
+background-color:rgb(1, 14, 13);
+max-width:100%;
 padding:7px;
 font-size:16pt;
-text-align:center;
-margin-bottom:20px;
-height: auto;
-font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-
-}
-.sidebar ul li a{
-    text-decoration: none;
-}
-
-
-ul li{
-list-style: none;
-
+margin-bottom: 10px;
 }
 
 #text{
  color:green;
 margin-top: 100px;
-font-weight: bolder;
 font-size: 40pt;
 }
-
 
 .button{
 border-radius:4px;
@@ -43,23 +48,25 @@ color:blue;
 }
 
 .sidebar{
-    margin-bottom: 50px;
+    margin-bottom:40px;
+    height:300px;
+    text-align:left;
+    padding:0px;
+    box-shadow:1px 2px 5px 2px rgba(0,0,0,0.2);
+}
+
+.sidebar ul li a {
+    font-size:15pt;
+    padding:14px;
 
 }
-.sidebar ul li a{
-    font-size: large;
-    padding:20px;
-    font-weight: bold;
-    height: auto;
-    margin-left: -40px;
+.tabs{
+    max-width: 100%;
+}
 
-}
-.sidebar ul hr{
-    margin-left: -40px;
-}
-.sidebar ul li a:hover {
-background-color: $cyan;
-color:white;
+.sidebar ul li:hover {
+border-bottom:2px solid rgb(1, 14, 13);
+border-left:2px solid rgb(1, 14, 13);
 }
 
 
@@ -82,13 +89,18 @@ color:white;
 cursor: pointer;
 }
 
+ol{
+list-style: decimal;
+}
+#start{
+    
+}
 .category{
     background-color:grey;
     width: auto;
     padding:8px;
     border-radius:0px 20px 20px  0px;
     color:white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-right-style:solid;
     border-right-width:8px;
     border-right-color: rgba(15, 136, 15, 0.876);
@@ -130,7 +142,17 @@ cursor: pointer;
     margin-left: 30px;
 
 }
-
+.carda{
+    margin-top: 100px;
+    
+}
+.carda .card-body .form-group{
+    margin-bottom:10px;
+}
+.carda .card-header{
+    background-color:rgb(1, 14, 13);
+    color:white;
+}
 .alter{
     margin-top:100px;
     color:gray;

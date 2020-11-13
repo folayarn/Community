@@ -16994,24 +16994,34 @@ a.text-dark:focus {
 
 * {
   color: black;
+  font-family: Tahoma;
+}
+
+.card {
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+  background-color: #010e0d;
+}
+
+.row,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  padding: 0px;
+  margin: 0px;
+}
+
+.sidebar span {
+  color: white;
+  font-size: 14pt;
 }
 
 a:hover {
   cursor: pointer;
-}
-
-#top {
-  background-color: #38c172;
-  width: auto;
-  padding: 7px;
-  font-size: 16pt;
-  text-align: center;
-  margin-bottom: 20px;
-  height: auto;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-
-.sidebar ul li a {
   text-decoration: none;
 }
 
@@ -17019,10 +17029,17 @@ ul li {
   list-style: none;
 }
 
+#top {
+  background-color: #010e0d;
+  max-width: 100%;
+  padding: 7px;
+  font-size: 16pt;
+  margin-bottom: 10px;
+}
+
 #text {
   color: green;
   margin-top: 100px;
-  font-weight: bolder;
   font-size: 40pt;
 }
 
@@ -17033,24 +17050,25 @@ ul li {
 }
 
 .sidebar {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
+  height: 300px;
+  text-align: left;
+  padding: 0px;
+  box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
 }
 
 .sidebar ul li a {
-  font-size: large;
-  padding: 20px;
-  font-weight: bold;
-  height: auto;
-  margin-left: -40px;
+  font-size: 15pt;
+  padding: 14px;
 }
 
-.sidebar ul hr {
-  margin-left: -40px;
+.tabs {
+  max-width: 100%;
 }
 
-.sidebar ul li a:hover {
-  background-color: #6cb2eb;
-  color: white;
+.sidebar ul li:hover {
+  border-bottom: 2px solid #010e0d;
+  border-left: 2px solid #010e0d;
 }
 
 #create {
@@ -17071,13 +17089,16 @@ ul li {
   cursor: pointer;
 }
 
+ol {
+  list-style: decimal;
+}
+
 .category {
   background-color: grey;
   width: auto;
   padding: 8px;
   border-radius: 0px 20px 20px 0px;
   color: white;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-right-style: solid;
   border-right-width: 8px;
   border-right-color: rgba(15, 136, 15, 0.876);
@@ -17114,6 +17135,19 @@ ul li {
   font-size: 11pt;
   padding: 3px;
   margin-left: 30px;
+}
+
+.carda {
+  margin-top: 100px;
+}
+
+.carda .card-body .form-group {
+  margin-bottom: 10px;
+}
+
+.carda .card-header {
+  background-color: #010e0d;
+  color: white;
 }
 
 .alter {

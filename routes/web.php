@@ -45,8 +45,20 @@ Route::put('/{id}', 'PostsController@update');
 Route::put('/{id}', 'PostsController@answerUpdate');
 Route::get('/trid=fedits/{id}', 'PostsController@edit');
 Route::get('/crk-fcedit/{id}/ok/{qeu}', 'PostsController@showEdit');
-//Route::any('/getlyrics', 'LyricsController@getsearch');
+
+Route::get('/following', 'PostsController@followedQues');
+
 Route::get('/search', 'PostsController@search');
 Route::put('/a/{id}', 'PostsController@answered');
-Route::get('/ans/{user_id}','PostsController@myAns');
-Route::get('/{user_id}','PostsController@myQues');
+Route::get('/ans','PostsController@myAns');
+Route::get('/my-q','PostsController@myQues');
+Route::post('/follow','PostsController@followPost');
+Route::delete('follow/{id}','PostsController@deleteFollow');
+
+//quiz routes
+Route::get('/quiz','QuizController@index');
+Route::get('/quiz/{cat_id}','QuizController@start');
+
+Route::get('/quiz/{cat_id}/wq','QuizController@questionPage');
+Route::post('/xs','QuizController@submitOption');
+    

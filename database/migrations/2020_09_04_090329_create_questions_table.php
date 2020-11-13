@@ -18,10 +18,14 @@ class CreateQuestionsTable extends Migration
             $table->string('topic')->nullable();
             $table->longText('body')->nullable();
             $table->string('category')->nullable();
-            $table->foreignId('user_id')->nullable();
+            $table->foreignId('user_id')->constrained();
             $table->string('question_provider');
             $table->boolean('isAnswered')->default(false);
+            $table->integer('countAns')->default(0);
             $table->timestamps();
+
+
+
         });
     }
 
