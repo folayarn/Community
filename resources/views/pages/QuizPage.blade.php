@@ -5,6 +5,8 @@
 <div class="row">
         <div class="col-md-11">
            <form action="/xs" method="POST">
+            @csrf
+            
             @foreach( $quiz as $qu)
             <div class="card" style="margin-bottom:15px">
                 <div class="card-header">
@@ -12,14 +14,15 @@
                 </div>
                 <div class="card-body">
                     <input name="question[{{$qu->id}}]" type="hidden" value="{{$qu->id}}"/>
-                    <ul>
+                    
                     @foreach ($qu->option as $opt)
-                        <li>
-                <input name="question[{{$opt->id}}]" type="radio" value="{{$opt->id}}"/> 
-                <span>{{$opt->option}}</span>
-                        </li>
+                        <div class="form-check">
+                <input class="form-check-input" name="question[{{$qu->id}}]" 
+                type="radio" value="{{$opt->id}}"/> 
+                <label class="form-check-label">{{$opt->option}}</label>
+                        </div>
                     @endforeach
-                    </ul>
+                    
                 </div>
             </div>
                 @endforeach

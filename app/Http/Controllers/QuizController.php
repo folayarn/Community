@@ -27,21 +27,20 @@ public function start($cat_id){
     return view('pages.start',compact('category'));
 }
 public function questionPage($cat_id){
+
  $quiz=Quiz::where('category_id',$cat_id)->get();
  
       return view('pages.quizPage',compact('quiz'));
 }
 
 public function submitOption(Request $request){
-    $this->validate($request,[
-        'option_id'=>'required'
-        ]);
+   
 
-        dd($request->all());
+        dd($request->input());
         $quiz=Option::where('quiz_id',$request->ques_id)->get();
         return view('pages.done')->with('ok');
  
-}
+    }
     
 
 }
